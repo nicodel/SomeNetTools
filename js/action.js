@@ -32,7 +32,7 @@ $(function () {
             var cidr = octet2cidr(inMask);
             var subnetId = subnetID(inIP, inMask);
             var broadcastAddr = broadcast(inIP, wildcard);
-            var startIP = startingIP(inIP, result);
+            var startIP = startingIP(inIP, inMask);
             var endIP = endingIP(inIP, wildcard);
             var hostNb = hostCount(inMask);
             
@@ -43,8 +43,8 @@ $(function () {
             $("#mask-dis").html(outMask);
             $("#sub-id").html(subnetId);
             $("#broad-addr").html(broadcastAddr);
-            $("#host-addr-from").html(startIP);
-            $("#host-addr-to").html(endIP);
+            $("#first-ip").html(startIP);
+            $("#last-ip").html(endIP);
             $("#wildcard-mask").html(wildcard);
             $("#nb-hosts").html(hostNb);
 

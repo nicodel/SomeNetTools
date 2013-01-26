@@ -21,6 +21,11 @@ body {
   font-family: 'MozTTLight', Verdana, sans-serif;
 }
 
+header menu img {
+  width:48px;
+  padding-right:10px;
+}
+
 section[role="region"] > header:first-child {
   background: url(../img/ui/header.png) repeat-x 0 0;
   height: 3.2rem;
@@ -78,7 +83,7 @@ a[role="button"] {
 }  
 
 #result {
-    width: 41.1em;
+/*    width: 41.1em;*/
 /*    margin: 2em 0;*/
     padding: 0;
     font-size:1.3rem;

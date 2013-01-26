@@ -1,21 +1,22 @@
 {
   "version": "0.1",
   "name": "SomeNetTools",
-  "description": "Some tools usefull for network geeks",
+  "description": "Useful and simple network calculator",
   "launch_path": "/index.html",
   "icons": {
-    "16": "/img/icons/mortar-16.png",
-    "48": "/img/icons/mortar-48.png"
+    "60": "/img/icons/MozIcon_60.png",
+    "128": "/img/icons/MozIcon_128.png"
   },
   "developer": {
-    "name": "Nicolas Delebecque",
+    "name": "Nicolas Delebecque, Jérémie Balagna-Ranin",
     "url": "https://github.com/nicodel/SommeNetTools"
   },
   "installs_allowed_from": ["*"],
   "locales": {
     "fr": {
-      "description": "Quelques outils utiles pour les geeks",
+      "description": "Useful and simple network calculator",
       "developer": {
+        "name": "Nicolas Delebecque, Jérémie Balagna-Ranin",
         "url": "https://github.com/nicodel/SommeNetTools"
       }
     }
