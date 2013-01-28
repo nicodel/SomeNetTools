@@ -114,9 +114,7 @@ function broadcast(aNet,aWild){
 //	We need the network address and the subnet mask for this.
 function startingIP(aNet,aMask){
     var a = subnetID(aNet,aMask);
-//    console.log("a: ", a);
     var d = octet2dec(a);
-//    console.log("d: ", d);
     d = d+1;
     return dec2octet(d);
 }
@@ -202,18 +200,14 @@ function cidr2octet(bits){
 }
 // Convert our array of 4 ints into a decimal (watch out for 16 bit JS integers here)
 function octet2dec(a){
-    //alert("octet2dec1 "+a[0]+"\n"+dec2bin(a[0])+"\n"+dec2bin(a[0] * 16777216));
+//    alert("octet2dec1 "+a[0]+" - "+dec2bin(a[0])+" - "+dec2bin(a[0] * 16777216));
     // poor mans bit shifting (Int32 issue)
-//    console.log("octet2dec - a: ", a);
     var d = 0;
     d = d + parseInt(a[0]) * 16777216 ;  //Math.pow(2,24);
-//    console.log("octet2dec - d1: ", d);
     d = d + a[1] * 65536;     //Math.pow(2,16);
-//    console.log("octet2dec - d2: ", d);
     d = d + a[2] * 256;    //Math.pow(2,8);
-//    console.log("octet2dec - d3: ", d);
     d = d + a[3];
-//    console.log("octet2dec - d4: ", d);
+    console.log("d: ", d);
     return d;
 }
 // Convert decimal to our array of 4 ints.
@@ -390,28 +384,62 @@ function calculateHosts(cidr) {
 // }
 
 function checkEntries (ip, mask) {
-    if(ip.indexOf("/") != -1) {
-       mask = ip.split("/")[1];
-       ip = ip.split("/")[0];
-       // console.log("ip and mask : ", ip, mask);
-       if (isNaN(mask) || mask === "" || mask === " ") {
-            return "Il ne faut saisir que des chiffres.";
-       } else if (mask < 0 || mask > 32) {
-            return "La valeur du masque saisie dans l'adresse IP doit être comprise entre 0 et 32.";
-       }
-       // console.log("success mask : ", mask);
-    } else {
-        var maskchk = check4digits(mask);
-        if (maskchk !== true) {
-            return maskchk;
-        }
-    }
-    var ipchk = check4digits(ip);
-    if (ipchk !== true) {
-        return ipchk;
-    }
-    
-    return true;
+    /* we check if one or both fields are empty,
+	 * and return the right message.
+	 */
+	if (ip == "" && mask == ""){
+		return "Specify valid IP address and subnet mask (ex: 192.168.10.1)."
+	}
+	else if (ip == "" && mask != ""){
+		return "Specify a valid IP address (ex: 192.168.10.1).";
+	}
+	else if (ip != "" && mask == ""){
+		return "Specify a valid subnet mask (ex: 255.255.255.0 or 24).";
+	}
+	/* we check if fields only contains numbers and dots,
+	 * and return an explicit error if it is the case.
+	 */
+	else if (ip.match(/[^1234567890\.]/i)!=null && mask.match(/[^1234567890\.]/i)!=null){
+		return "Specify valid IP address and subnet mask (ex: 192.168.10.1, 255.255.255.0 or 24).";
+	}
+	else if (ip.match(/[^1234567890\.]/i)!=null && mask.match(/[^1234567890\.]/i)==null){
+		return "Specify a valid IP address (ex: 192.168.10.1).";
+	}
+	else if (ip.match(/[^1234567890\.]/i)==null && mask.match(/[^1234567890\.]/i)!=null){
+		return "Specify a valid subnet mask (ex: 255.255.255.0 or 24).";
+	}
+	/* we check that both fields are composed of 4 digits separated by dots,
+	 * and return an explicit error if it is the case.
+	 */
+	var i = ip.split(".");
+	var m = mask.split(".");
+	if (i.length!=4){
+		return "Specify a valid IP address (ex: 192.168.10.1).";
+	}
+	if (m.length!=4 && isNaN(mask) == false){
+		var mask = parseInt(mask)
+		if (mask<=0 | mask>=33){
+			return "Specify a valid subnet mask (ex: 255.255.255.0 or 24).";
+		}
+		else{
+			mask = cidr2octet(m);
+			return mask.join(".")
+		}
+	}
+	for (var x=0; x<4; x++){
+		var a = parseInt(i[x])
+		var b = m[x]
+		if (a<=0 | a>=255){
+			return "Specify a valid IP address (ex: 255.255.255.0 or 24).";
+		}
+		else if (b.match(/0|128|192|224|240|248|252|255/i)==null){
+			return "Specify a valid subnet mask (ex: 255.255.255.0 or 24).";
+		}
+	}
+	/* if nothing is wrong,
+	 * return subnet mask
+	 */
+	return mask;
 }
 
 function check4digits (digits) {

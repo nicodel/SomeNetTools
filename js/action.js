@@ -15,32 +15,27 @@ $(function () {
         }
     });
 
-    $("#mask").keyup(function () {
-        //    console.log($("#mask").val());
-        if (checkEntries($("#ip").val(), $("#mask").val()) == true) {
-            $("#submit").removeAttr('disabled');
-        }
-    });
+//    $("#mask").keyup(function () {
+//        //    console.log($("#mask").val());
+//        if (checkEntries($("#ip").val(), $("#mask").val()) == true) {
+//            $("#submit").removeAttr('disabled');
+//        }
+//    });
 
     $("#submit").click(function () {
-        if (checkEntries($("#ip").val(), $("#mask").val()) == true) {
+        var result = checkEntries($("#ip").val(), $("#mask").val());
+        if (result[0] !== "S") {
+            var inMask = calculateMask(result);
             var inIP = calculateIP($("#ip").val());
-            var inMask = calculateMask($("#mask").val());
-
-            var cidr = octet2cidr(inMask);
-
-            var subnetId = subnetID(inIP, inMask);
-
+            
             var wildcard = wildcardMask(inMask);
-
+            var cidr = octet2cidr(inMask);
+            var subnetId = subnetID(inIP, inMask);
             var broadcastAddr = broadcast(inIP, wildcard);
-
-            var startIP = startingIP(inIP, inMask);
+            var startIP = startingIP(inIP, result);
             var endIP = endingIP(inIP, wildcard);
-
             var hostNb = hostCount(inMask);
             
-            console.log("inIP,inMask: ", inIP,inMask);
             var outIP = inIP.join(".") + " / " + cidr;
             var outMask = cidr2octet(cidr).join(".");
 
@@ -55,7 +50,9 @@ $(function () {
 
             $("#result").css("display", "block");
         }
-
-        $("#result").css("display", "block");
+        else{
+            alert(result);
+            /* Display result in message area within the page instead of an alert */
+        }
     });
 });
