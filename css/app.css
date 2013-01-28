@@ -12,7 +12,6 @@ body {
 }
 
 button, 
-
 a[role="button"]::-moz-focus-inner,
 button::-moz-focus-inner {
   border: none;

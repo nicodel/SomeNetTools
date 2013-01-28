@@ -3,68 +3,59 @@
  * Manage interaction on html files
  */
 
-$(function() {
-  console.log("jQuery ok");
+$(function () {
+    //  console.log("jQuery ok");
 
-  $("#ip").keyup(function()
-  {
-    console.log($("#ip").val());
-    console.log(checkEntries($("#ip").val(), $("#mask").val()));
-    if (checkEntries($("#ip").val(), $("#mask").val()) == true)
-    {
-      console.log("in ok");
-      $("#submit").removeAttr('disabled');
-    }
-  });
+    $("#ip").keyup(function () {
+        //    console.log($("#ip").val());
+        //    console.log(checkEntries($("#ip").val(), $("#mask").val()));
+        if (checkEntries($("#ip").val(), $("#mask").val()) == true) {
+            console.log("in ok");
+            $("#submit").removeAttr('disabled');
+        }
+    });
 
-  $("#mask").keyup(function()
-  {
-    console.log($("#mask").val());
-    if (checkEntries($("#ip").val(), $("#mask").val()) == true)
-    {
-      $("#submit").removeAttr('disabled');
-    }
-  });
+    $("#mask").keyup(function () {
+        //    console.log($("#mask").val());
+        if (checkEntries($("#ip").val(), $("#mask").val()) == true) {
+            $("#submit").removeAttr('disabled');
+        }
+    });
 
-  $("#submit").click(function()
-  {
-    if (checkEntries($("#ip").val(), $("#mask").val()) == true)
-    {
-      var inIP = $("#ip").val().split(".");
-      var inMask = $("#mask").val().split(".");
+    $("#submit").click(function () {
+        if (checkEntries($("#ip").val(), $("#mask").val()) == true) {
+            var inIP = calculateIP($("#ip").val());
+            var inMask = calculateMask($("#mask").val());
 
-      var cidr = octet2cidr(inMask);
+            var cidr = octet2cidr(inMask);
 
-      var subnetId = subnetID(inIP, inMask);
+            var subnetId = subnetID(inIP, inMask);
 
-      var wildcard = wildcardMask(inMask);
+            var wildcard = wildcardMask(inMask);
 
-      var broadcastAddr = broadcast(inIP, wildcardMask);
+            var broadcastAddr = broadcast(inIP, wildcard);
 
-      var startIP = startingIP(inIP, inMask);
-      var endIP = endingIP(inIP, wildcard);
+            var startIP = startingIP(inIP, inMask);
+            var endIP = endingIP(inIP, wildcard);
 
-      var hostNb = hostCount(inMask);
+            var hostNb = hostCount(inMask);
+            
+            console.log("inIP,inMask: ", inIP,inMask);
+            var outIP = inIP.join(".") + " / " + cidr;
+            var outMask = cidr2octet(cidr).join(".");
 
-      var outIP = inIP.join(".") + " / " + cidr;
-      var outMask = cidr2octet(cidr).join(".");
-      //console.log("outMask: ", outMask);
- 
-      var outSubnetId = subnetId.join(".");
-      var outWildcard = wildcard.join(".");
+            $("#ip-addr").html(outIP);
+            $("#mask-dis").html(outMask);
+            $("#sub-id").html(subnetId);
+            $("#broad-addr").html(broadcastAddr);
+            $("#host-addr-from").html(startIP);
+            $("#host-addr-to").html(endIP);
+            $("#wildcard-mask").html(wildcard);
+            $("#nb-hosts").html(hostNb);
 
-      $("#ip-addr").html(outIP);
-      $("#mask-dis").html(outMask);
-      $("#sub-id").html(outSubnetId);
-      $("#broad-addr").html(broadcastAddr.join("."));
-      $("#host-addr-from").html(startIP.join("."));
-      $("#host-addr-to").html(endIP.join("."));
-      $("#wildcard-mask").html(outWildcard);
-      $("#nb-hosts").html(hostNb);
+            $("#result").css("display", "block");
+        }
 
-      $("#result").css("display", "block");
-    }
-
-      $("#result").css("display", "block");
-  });
+        $("#result").css("display", "block");
+    });
 });
