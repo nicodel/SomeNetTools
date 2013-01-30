@@ -26,11 +26,21 @@
   <script type="text/javascript" src="js/calculation.js"></script>
   <script type="text/javascript" src="js/action.js"></script>
   <link href="css/app.css" rel="stylesheet" type="text/css" />
+<!--  <link rel="stylesheet" type="text/css" href="shared/style/headers.css">-->
 </head>
 
 <body>
+    <section role="region">
+        <header>
+            <menu type="toolbar">
+<!--                <a href="#"><span class="icon icon-edit">edit</span></a>-->
+                <a href="#"><span class="icon icon-send">install</span></a>
+            </menu>
+            <h1>SomeNetTools</h1>
+        </header>
+    </section>
   <div id="top">
-    <button id="install-btn">Install</button>
+<!--    <button id="install-btn">Install</button>-->
     
     <div><input type="text" value="" id="ip" /></div>
     <div><input type="text" value="" id="mask" /></div>
@@ -54,13 +64,7 @@
       <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Broadcast:</div>
       <div style="width:40%; margin-left:5%; float:left;" id="broad-addr"></div>
     </div>
-    <div class="info">
-      <div style="margin-left:5%; float:left;" class="infoTitle">Host Address Range:</div>
-      <!-- <div style="width:40%; margin-left:5%; float:left;">
-        
-      </div>-->
-    </div>
-    <div style="padding-left:6%; float:left;" class="info"><span id="host-addr-from"></span> to <span id="host-addr-to"></span></div>
+
     <div class="info">
       <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Wildcard Mask:</div>
       <div style="width:40%; margin-left:5%; float:left;" id="wildcard-mask"></div>
@@ -69,6 +73,13 @@
       <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Host Number:</div>
       <div style="width:40%; margin-left:5%; float:left;" id="nb-hosts"></div>
     </div>
+    <div class="info">
+      <div style="margin-left:5%; float:left;" class="infoTitle">Host Address Range:</div>
+      <!-- <div style="width:40%; margin-left:5%; float:left;">
+        
+      </div>-->
+    </div>
+    <div style="padding-left:6%; float:left;" class="info"><span id="host-addr-from"></span> to <span id="host-addr-to"></span></div>
   </div>
 
   <script type="text/javascript" data-main="js/init.js" src="js/lib/require.js">

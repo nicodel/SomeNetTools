@@ -20,6 +20,22 @@ body {
   font-family: 'MozTTLight', Verdana, sans-serif;
 }
 
+section[role="region"] > header:first-child {
+  background: url(../img/ui/header.png) repeat-x 0 0;
+  height: 3.2rem;
+}
+section[role="region"] > header:first-child h1 {
+  font: 1.3rem/3.2rem "MozTT", Sans-serif;
+  height: auto;
+}
+section[role="region"] > header:first-child .icon {
+
+  height: 3.2rem;
+}
+section[role="region"] > header:first-child .icon.icon-send {
+  background-image: url(../img/icons/send.png);
+}
+
 .info, input[type="text"] {
     font:1rem/4rem "MozTT", Sans-serif;
 }
