@@ -29,11 +29,14 @@ section[role="region"] > header:first-child h1 {
   height: auto;
 }
 section[role="region"] > header:first-child .icon {
-
   height: 3.2rem;
 }
 section[role="region"] > header:first-child .icon.icon-send {
   background-image: url(../img/icons/send.png);
+}
+section[role="region"] > header:first-child menu[type="toolbar"] a {
+    text-align:right;
+    padding-right:1rem;
 }
 
 .info, input[type="text"] {
