@@ -42,45 +42,61 @@
   <div id="top">
 <!--    <button id="install-btn">Install</button>-->
     
-    <div><input type="text" value="" id="ip" /></div>
-    <div><input type="text" value="" id="mask" /></div>
+    <div><input placeholder="Enter IP address ..." required="" type="text" value="" id="ip" /></div>
+    <div><input placeholder="Enter subnet mask ..." required="" type="text" value="" id="mask" /></div>
     <div><button id="submit">Calculate</button></div>
   </div>
   <div id="slider"><hr/></div>
+    <section data-type="list" id="result" style>
+        <ul>
+            <li>
+                <div class="infoTitle">IP / CIDR Mask:</div>
+                <div class="infoValue" id="ip-addr"></div>
+            </li>
+            <li>
+                <div class="infoTitle">Mask:</div>
+                <div class="infoValue" id="mask-dis"></div>
+            </li>
+        </ul>
+    
+    </section>
+<!--
   <div id="result" style="display:none">
     <div class="info">
-      <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">IP / Mask:</div>
-      <div style="width:40%; margin-left:5%; float:left;" id="ip-addr"></div>
+      <div class="infoTitle">IP / CIDR Mask:</div>
+      <div class="infoValue" id="ip-addr"></div>
     </div>
     <div class="info">
-      <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Mask:</div>
-      <div style="width:40%; margin-left:5%; float:left;" id="mask-dis"></div>
+      <div class="infoTitle">Mask:</div>
+      <div class="infoValue" id="mask-dis"></div>
     </div>
     <div class="info">
-      <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Subnet ID:</div>
-      <div style="width:40%; margin-left:5%; float:left;" id="sub-id"></div>
+      <div class="infoTitle">Subnet ID:</div>
+      <div class="infoValue" id="sub-id"></div>
     </div>
     <div class="info">
-      <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Broadcast:</div>
-      <div style="width:40%; margin-left:5%; float:left;" id="broad-addr"></div>
+      <div class="infoTitle">Broadcast:</div>
+      <div class="infoValue" id="broad-addr"></div>
     </div>
 
     <div class="info">
-      <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Wildcard Mask:</div>
-      <div style="width:40%; margin-left:5%; float:left;" id="wildcard-mask"></div>
+      <div class="infoTitle">Wildcard Mask:</div>
+      <div class="infoValue" id="wildcard-mask"></div>
     </div>
     <div class="info">
-      <div style="width:40%; margin-left:5%; float:left;" class="infoTitle">Host Number:</div>
-      <div style="width:40%; margin-left:5%; float:left;" id="nb-hosts"></div>
+      <div class="infoTitle">Number of hosts:</div>
+      <div class="infoValue" id="nb-hosts"></div>
     </div>
     <div class="info">
-      <div style="margin-left:5%; float:left;" class="infoTitle">Host Address Range:</div>
-      <!-- <div style="width:40%; margin-left:5%; float:left;">
-        
-      </div>-->
+      <div class="infoTitle">First IP:</div>
+      <div class="infoValue" id="first-ip"></div>
     </div>
-    <div style="padding-left:6%; float:left;" class="info"><span id="host-addr-from"></span> to <span id="host-addr-to"></span></div>
+    <div class="info">
+      <div class="infoTitle">Last IP:</div>
+      <div class="infoValue" id="last-ip"></div>
+    </div>
   </div>
+-->
 
   <script type="text/javascript" data-main="js/init.js" src="js/lib/require.js">
   </script>
