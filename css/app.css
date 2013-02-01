@@ -48,11 +48,13 @@ a[role="button"] {
 .info, input[type="text"] {
     font:1.2rem/4rem "MozTT", Sans-serif;
     margin-top: 10px;
-}
+    background: #fff url(../img/ui/shadow.png) repeat-x;
+}  
 
 .info, #result {
+/*
   -moz-box-sizing: border-box;
-/*  display: block;*/
+  display: block;
   display:none;
   overflow: hidden;
   width: 100%;
@@ -61,8 +63,9 @@ a[role="button"] {
   padding: 0 0.8rem;
   border: 0.1rem solid #ccc;
   border-radius: 0.3rem;
-  box-shadow: none; /* override the box-shadow from the system (performance issue) */
-  background: #fff url(input_areas/images/ui/shadow.png) repeat-x;
+  box-shadow: none;  override the box-shadow from the system (performance issue) 
+  background: #fff url(../img/ui/shadow.png) repeat-x;
+*/
 }
 
 .infoTitle, .infoValue  {
