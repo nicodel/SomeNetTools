@@ -33,94 +33,46 @@
     <section role="region">
         <header>
             <menu type="toolbar">
-<!--                <a href="#"><span class="icon icon-edit">edit</span></a>-->
+<!--                <a href="#"><span class="icon icon-send" id="#install-btn" >install</span></a>-->
                 <a href="#"><span class="icon icon-send">install</span></a>
             </menu>
             <h1>SomeNetTools</h1>
         </header>
     </section>
   <div id="top">
-<!--    <button id="install-btn">Install</button>-->
-    
     <div><input placeholder="Enter IP address ..." required="" type="text" value="" id="ip" /></div>
     <div><input placeholder="Enter subnet mask ..." required="" type="text" value="" id="mask" /></div>
     <div><button id="submit">Calculate</button></div>
   </div>
   <div id="slider"><hr/></div>
-    <section data-type="list" id="result" style>
-        <ul>
-            <li>
-                <div class="infoTitle">IP / CIDR Mask:</div>
-                <div class="infoValue" id="ip-addr"></div>
-            </li>
-            <li>
-                <div class="infoTitle">Mask:</div>
-                <div class="infoValue" id="mask-dis"></div>
-            </li>
-            <li>
-                <div class="infoTitle">Subnet ID:</div>
-                <div class="infoValue" id="sub-id"></div>
-            </li>
-            <li>
-                <div class="infoTitle">Broadcast:</div>
-                <div class="infoValue" id="broad-addr"></div>
-            </li>
-            <li>
-                <div class="infoTitle">Wildcard Mask:</div>
-                <div class="infoValue" id="wildcard-mask"></div>
-            </li>
-            <li>
-                <div class="infoTitle">Number of hosts:</div>
-                <div class="infoValue" id="nb-hosts"></div>
-            </li>
-            <li>
-                <div class="infoTitle">First IP:</div>
-                <div class="infoValue" id="first-ip"></div>
-            </li>
-            <li>
-                <div class="infoTitle">Last IP:</div>
-                <div class="infoValue" id="last-ip"></div>
-            </li>
-        </ul>
+    <section data-type="list" id="result">
+        <dl>
+            <dt class="infoTitle">IP / CIDR Mask:</dt>
+            <dd class="infoValue" id="ip-addr"></dd>
+            
+            <dt class="infoTitle">Mask:</dt>
+            <dd class="infoValue" id="mask-dis"></dd>
+
+            <dt class="infoTitle">Subnet ID:</dt>
+            <dd class="infoValue" id="sub-id"></dd>
+            
+            <dt class="infoTitle">Broadcast:</dt>
+            <dd class="infoValue" id="broad-addr"></dd>
+
+            <dt class="infoTitle">Wildcard Mask:</dt>
+            <dd class="infoValue" id="wildcard-mask"></dd>
+
+            <dt class="infoTitle">Number of hosts:</dt>
+            <dd class="infoValue" id="nb-hosts"></dd>
+
+            <dt class="infoTitle">First IP:</dt>
+            <dd class="infoValue" id="first-ip"></dd>
+
+            <dt class="infoTitle">Last IP:</dt>
+            <dd class="infoValue" id="last-ip"></dd>
+        </dl>
     
     </section>
-<!--
-  <div id="result" style="display:none">
-    <div class="info">
-      <div class="infoTitle">IP / CIDR Mask:</div>
-      <div class="infoValue" id="ip-addr"></div>
-    </div>
-    <div class="info">
-      <div class="infoTitle">Mask:</div>
-      <div class="infoValue" id="mask-dis"></div>
-    </div>
-    <div class="info">
-      <div class="infoTitle">Subnet ID:</div>
-      <div class="infoValue" id="sub-id"></div>
-    </div>
-    <div class="info">
-      <div class="infoTitle">Broadcast:</div>
-      <div class="infoValue" id="broad-addr"></div>
-    </div>
-
-    <div class="info">
-      <div class="infoTitle">Wildcard Mask:</div>
-      <div class="infoValue" id="wildcard-mask"></div>
-    </div>
-    <div class="info">
-      <div class="infoTitle">Number of hosts:</div>
-      <div class="infoValue" id="nb-hosts"></div>
-    </div>
-    <div class="info">
-      <div class="infoTitle">First IP:</div>
-      <div class="infoValue" id="first-ip"></div>
-    </div>
-    <div class="info">
-      <div class="infoTitle">Last IP:</div>
-      <div class="infoValue" id="last-ip"></div>
-    </div>
-  </div>
--->
 
   <script type="text/javascript" data-main="js/init.js" src="js/lib/require.js">
   </script>

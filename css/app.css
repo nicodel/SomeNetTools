@@ -3,7 +3,7 @@
    HTML, and volo will inline it when building for production */
 
 /* Styles for the installation button */
-@import "install-button.css";
+/*@import "install-button.css";*/
 /* Styles from FirefoxOS building blocks */
 @import "button.css";
 @import "headers.css";
@@ -39,6 +39,32 @@ section[role="region"] > header:first-child menu[type="toolbar"] a {
     text-align:right;
     padding-right:1rem;
 }
+/*
+section[role="region"] > header:first-child menu[type="toolbar"] a {
+  height: auto;
+  min-width: 0;
+  width: auto;
+  margin-bottom: 0;
+  border-radius: 0;
+  line-height: 0;
+  float: left;
+  background: none;
+  padding: 0 1.75rem;
+  -moz-box-sizing: border-box;
+  text-align: center;
+  text-shadow: none;
+  position: relative;
+  z-index: 5;
+}
+
+section[role="region"] > header:first-child menu[type="toolbar"] a:last-child {
+  background: url(../img/icons/send.png) no-repeat left center;
+  margin-left: -0.2rem;
+  z-index: 1;
+}
+*/
+
+
 button,
 a[role="button"] {
     background: #fafafa url(../img/ui/default.png) repeat-x left bottom;
@@ -46,34 +72,25 @@ a[role="button"] {
 }
 
 .info, input[type="text"] {
-    font:1.2rem/4rem "MozTT", Sans-serif;
+    font:1.3rem/4rem "MozTT", Sans-serif;
     margin-top: 10px;
     background: #fff url(../img/ui/shadow.png) repeat-x;
 }  
 
-.info, #result {
-/*
-  -moz-box-sizing: border-box;
-  display: block;
-  display:none;
-  overflow: hidden;
-  width: 100%;
-  height: 4rem;
-  resize: none;
-  padding: 0 0.8rem;
-  border: 0.1rem solid #ccc;
-  border-radius: 0.3rem;
-  box-shadow: none;  override the box-shadow from the system (performance issue) 
-  background: #fff url(../img/ui/shadow.png) repeat-x;
-*/
+#result {
+    width: 41.1em;
+/*    margin: 2em 0;*/
+    padding: 0;
+    font-size:1.3rem;
 }
-
-.infoTitle, .infoValue  {
-    width:40%;
-    margin-left:5%;
-    float:left;
+#result dt {
+    margin: 0;
+/*    padding: 0;*/
+    font-weight: bold;
 }
-
-.infoTitle {
-  font-weight: bold;
+#result dd {
+    margin: 0 0 1em 0;
+/*    padding: 0;*/
+    border-bottom: 1px solid #e6e6e6;
+    color: #5b5b5b;
 }
