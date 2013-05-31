@@ -9,18 +9,7 @@
   },
   "developer": {
     "name": "Nicolas Delebecque, Jérémie Balagna-Ranin",
-    "url": "https://github.com/nicodel/SommeNetTools"
-  },
-  "installs_allowed_from": ["*"],
-  "locales": {
-    "fr": {
-      "description": "Useful and simple network calculator",
-      "developer": {
-        "name": "Nicolas Delebecque, Jérémie Balagna-Ranin",
-        "url": "https://github.com/nicodel/SommeNetTools"
-      }
-    }
+    "url": "https://github.com/nicodel"
   },
   "default_locale": "en"
 }
-
