@@ -1,4 +1,3 @@
-(
 {
     "version": "0.1",
     "name": "SomeNetTools",
@@ -14,4 +13,3 @@
     },
     "default_locale": "en"
 }
-)
