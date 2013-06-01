@@ -2,7 +2,7 @@
     "version": "0.1",
     "name": "SomeNetTools",
     "description": "Useful and simple network calculator",
-    "launch_path": "./index.html",
+    "launch_path": "toto/index.html",
     "icons": {
         "60": "img/icons/MozIcon_60.png",
         "128": "img/icons/MozIcon_128.png"
