@@ -1,15 +1,18 @@
 {
-    "version": "0.1",
-    "name": "SomeNetTools",
-    "description": "Useful and simple network calculator",
-    "launch_path": "/",
-    "icons": {
-        "60": "/img/icons/MozIcon_60.png",
-        "128": "/img/icons/MozIcon_128.png"
-    },
-    "developer": {
-        "name": "Nicolas Delebecque, Jérémie Balagna-Ranin",
-        "url": "https://github.com/nicodel"
-    },
-    "default_locale": "en"
+  "version": "0.1",
+  "name": "SomeNetTools",
+  "description": "Useful and Simple network calculator",
+  "launch_path": "/",
+  "icons": {
+    "16": "/img/icons/mortar-16.png",
+    "48": "/img/icons/mortar-48.png",
+    "128": "/img/icons/mortar-128.png"
+  },
+  "developer": {
+    "name": "Nicolas Delebecque",
+    "url": "http://www.github.com/nicodel"
+  },
+  "installs_allowed_from": ["*"],
+  "appcache_path": "/cache.manifest",
+  "default_locale": "en"
 }
