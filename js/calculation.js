@@ -1,24 +1,24 @@
 /******************************************************************************
- * Feel free to use this code.  Leave my comments in place please.
- * JavaScript Subnet Calculator written by John Thaemltiz
- ******************************************************************************/
+* Feel free to use this code. Leave my comments in place please.
+* JavaScript Subnet Calculator written by John Thaemltiz
+******************************************************************************/
 
 /******************************************************************************
- * You can see the use of all the available functions in displayInfo()
- *
- * All the values are calculated based on only 2 array variables.
- *	nAddr = This is your network address.  It's a 4 element array of
- *		integers.  Each integer is an octet of the IP Address.
- *	nMask = This is your network mask.  Same kind of 4 element array
- *		to hold your mask.
- *
- * That's all you need to calculate the rest of the values you see.
- * Note I kick off all the calculations by calling calculateClass('A') onload.
- ******************************************************************************/
+* You can see the use of all the available functions in displayInfo()
+*
+* All the values are calculated based on only 2 array variables.
+* nAddr = This is your network address. It's a 4 element array of
+* integers. Each integer is an octet of the IP Address.
+* nMask = This is your network mask. Same kind of 4 element array
+* to hold your mask.
+*
+* That's all you need to calculate the rest of the values you see.
+* Note I kick off all the calculations by calling calculateClass('A') onload.
+******************************************************************************/
 
 /******************************************************************************
- * Declare our network address and mask.
- ******************************************************************************/
+* Declare our network address and mask.
+******************************************************************************/
 var nAddr = new Array(10, 0, 0, 0);
 var nMask = new Array(255, 0, 0, 0);
 
@@ -40,45 +40,45 @@ function calculateMask(mask) {
 }
 
 /******************************************************************************
- * displayInfo() performs calculations and populates our HTML elements.
- *
- * I declare variables with the result of each calculation I do.  Hence the real
- * code, the calculation functions, are not dependent on HTML form elements.
- ******************************************************************************/
+* displayInfo() performs calculations and populates our HTML elements.
+*
+* I declare variables with the result of each calculation I do. Hence the real
+* code, the calculation functions, are not dependent on HTML form elements.
+******************************************************************************/
 //function displayInfo() {
-//    try {
-//        document.getElementById("network").value = nAddr[0]+"."+nAddr[1]+"."+nAddr[2]+"."+nAddr[3];
-//        document.getElementById("mask").value = nMask[0]+"."+nMask[1]+"."+nMask[2]+"."+nMask[3];
-//        var wc = wildcardMask(nMask);
-//        document.getElementById("wildcard").value = wc[0]+"."+wc[1]+"."+wc[2]+"."+wc[3];
-//        var cidr = octet2cidr(nMask);
-//        document.getElementById("maskbits").value = cidr;
-//        document.getElementById("bitmap").value = subnetBitmap(nAddr,nMask);
-//        document.getElementById("hosts").value = hostCount(nMask);
-//        var aSubnet = subnetID(nAddr,nMask);
-//        document.getElementById("subnetID").value = aSubnet[0]+"."+aSubnet[1]+"."+aSubnet[2]+"."+aSubnet[3];
-//        var aBcast = broadcast(nAddr,wc);
-//        document.getElementById("broadcast").value = aBcast[0]+"."+aBcast[1]+"."+aBcast[2]+"."+aBcast[3];
-//        var aStart = startingIP(nAddr,nMask);
-//        document.getElementById("startIP").value = aStart[0]+"."+aStart[1]+"."+aStart[2]+"."+aStart[3];
-//        var aEnd = endingIP(nAddr,wc);
-//        document.getElementById("endIP").value = aEnd[0]+"."+aEnd[1]+"."+aEnd[2]+"."+aEnd[3];
-//        populateMaskSelect( document.getElementById('maskSelect'), nAddr, nMask[0]+"."+nMask[1]+"."+nMask[2]+"."+nMask[3]);
-//        populateHostsSelect( document.getElementById('hostsSelect'), nAddr,cidr);
-//    } catch(e) {
-//        if( confirm("Error: Debug the stack trace?") ) {
-//            stackTrace(e);
-//        }
-//    }
+// try {
+// document.getElementById("network").value = nAddr[0]+"."+nAddr[1]+"."+nAddr[2]+"."+nAddr[3];
+// document.getElementById("mask").value = nMask[0]+"."+nMask[1]+"."+nMask[2]+"."+nMask[3];
+// var wc = wildcardMask(nMask);
+// document.getElementById("wildcard").value = wc[0]+"."+wc[1]+"."+wc[2]+"."+wc[3];
+// var cidr = octet2cidr(nMask);
+// document.getElementById("maskbits").value = cidr;
+// document.getElementById("bitmap").value = subnetBitmap(nAddr,nMask);
+// document.getElementById("hosts").value = hostCount(nMask);
+// var aSubnet = subnetID(nAddr,nMask);
+// document.getElementById("subnetID").value = aSubnet[0]+"."+aSubnet[1]+"."+aSubnet[2]+"."+aSubnet[3];
+// var aBcast = broadcast(nAddr,wc);
+// document.getElementById("broadcast").value = aBcast[0]+"."+aBcast[1]+"."+aBcast[2]+"."+aBcast[3];
+// var aStart = startingIP(nAddr,nMask);
+// document.getElementById("startIP").value = aStart[0]+"."+aStart[1]+"."+aStart[2]+"."+aStart[3];
+// var aEnd = endingIP(nAddr,wc);
+// document.getElementById("endIP").value = aEnd[0]+"."+aEnd[1]+"."+aEnd[2]+"."+aEnd[3];
+// populateMaskSelect( document.getElementById('maskSelect'), nAddr, nMask[0]+"."+nMask[1]+"."+nMask[2]+"."+nMask[3]);
+// populateHostsSelect( document.getElementById('hostsSelect'), nAddr,cidr);
+// } catch(e) {
+// if( confirm("Error: Debug the stack trace?") ) {
+// stackTrace(e);
+// }
+// }
 //}
 
 /******************************************************************************
- * These are the real functions that do all the work.  These functions are
- * called from displayInfo which then displays the calculated info.
- ******************************************************************************/
-// Returns the wildcard mask from the subnet mask.  The wild card mask is
-//	the subnet mask with the bits flipped.  Hence you just need to pass
-//	in the subnet mask.
+* These are the real functions that do all the work. These functions are
+* called from displayInfo which then displays the calculated info.
+******************************************************************************/
+// Returns the wildcard mask from the subnet mask. The wild card mask is
+// the subnet mask with the bits flipped. Hence you just need to pass
+// in the subnet mask.
 function wildcardMask(aMask) {
   var a = new Array(0, 0, 0, 0);
   for (var i = 0; i < 4; i++) {
@@ -87,8 +87,8 @@ function wildcardMask(aMask) {
   return a.join(".");
 }
 // Calculate the last available ip address in the network and return it as
-//	an int array.  This is basically one less than the broadcast address.
-//	We need the network address and the wildcard mask for this.
+// an int array. This is basically one less than the broadcast address.
+// We need the network address and the wildcard mask for this.
 
 function endingIP(aNet, aWild) {
   // work around int32
@@ -98,23 +98,23 @@ function endingIP(aNet, aWild) {
   return dec2octet(d);
 }
 // Calculate the broadcast address (the last ip address in the network) and
-//	return it as an int array.
-//	We need the network address and the wildcard mask for this.
+// return it as an int array.
+// We need the network address and the wildcard mask for this.
 
 function broadcast(aNet, aWild) {
   // work around int32
   var a = new Array(0, 0, 0, 0);
   for (var i = 0; i < 3; i++) {
     a[i] = aNet[i] | aWild[i];
-    //         a[i] = aNet[i];
+    // a[i] = aNet[i];
   }
   aWild = aWild.split(".", 4);
   a[3] = aWild[3];
   return a.join(".");
 }
 // Calculate the subnet id available address in the network and return it as an
-//	int array.  This is basically one more than the network address (subnet ID).
-//	We need the network address and the subnet mask for this.
+// int array. This is basically one more than the network address (subnet ID).
+// We need the network address and the subnet mask for this.
 
 function startingIP(aNet, aMask) {
   var a = subnetID(aNet, aMask);
@@ -122,9 +122,9 @@ function startingIP(aNet, aMask) {
   d = d + 1;
   return dec2octet(d);
 }
-// Calculate the subnet id  (the first address in the network) and return it as an
-//	int array.
-//	We need the network address and the subnet mask for this.
+// Calculate the subnet id (the first address in the network) and return it as an
+// int array.
+// We need the network address and the subnet mask for this.
 
 function subnetID(aNet, aMask) {
   var a = new Array(0, 0, 0, 0);
@@ -157,41 +157,41 @@ function octet2cidr(aMask) {
   return mask.indexOf(0);
 }
 // calculate all available bits in and return it as a string.
-//	1 and 0 are hard coded by Class as defined by the IEEE
-//	n = network mask as defined by Class
-//	s = subnet mask based
-//	h = available host IP addresses
+// 1 and 0 are hard coded by Class as defined by the IEEE
+// n = network mask as defined by Class
+// s = subnet mask based
+// h = available host IP addresses
 // function subnetBitmap(aNet,aMask){
-//     var map = "";
-//     var i = 0;
-//     var cidr = octet2cidr(aMask);
-//     if( aNet[0] >= 1 && aNet[0] <= 126 ) {
-//         //class A
-//         map = "0nnnnnnn";
-//         i = map.length;
-//     } else if( aNet[0] >= 128 && aNet[0] <= 191 ){
-//         //class B
-//         map = "10nnnnnn.nnnnnnnn";
-//         i = map.length-1;
-//     } else if( aNet[0] >= 192 && aNet[0] <= 223 ){
-//         //class C
-//         map = "110nnnnn.nnnnnnnn.nnnnnnnn";
-//         i = map.length-2;
-//     }
-//     // subnet bits
-//     while(i < cidr) {
-//         if(i%8 == 0) map+=".";
-//         map += "s";
-//         i++;
-//     }
-//     // host bits
-//     while(i < 32) {
-//         if(i%8 == 0) map+=".";
-//         map += "h";
-//         i++;
-//     }
+// var map = "";
+// var i = 0;
+// var cidr = octet2cidr(aMask);
+// if( aNet[0] >= 1 && aNet[0] <= 126 ) {
+// //class A
+// map = "0nnnnnnn";
+// i = map.length;
+// } else if( aNet[0] >= 128 && aNet[0] <= 191 ){
+// //class B
+// map = "10nnnnnn.nnnnnnnn";
+// i = map.length-1;
+// } else if( aNet[0] >= 192 && aNet[0] <= 223 ){
+// //class C
+// map = "110nnnnn.nnnnnnnn.nnnnnnnn";
+// i = map.length-2;
+// }
+// // subnet bits
+// while(i < cidr) {
+// if(i%8 == 0) map+=".";
+// map += "s";
+// i++;
+// }
+// // host bits
+// while(i < 32) {
+// if(i%8 == 0) map+=".";
+// map += "h";
+// i++;
+// }
 
-//     return map;
+// return map;
 // }
 // Convert CIDR to array of 4 ints (Classless Inter Domain Routing)
 
@@ -208,7 +208,7 @@ function cidr2octet(bits) {
 // Convert our array of 4 ints into a decimal (watch out for 16 bit JS integers here)
 
 function octet2dec(a) {
-  //    alert("octet2dec1 "+a[0]+" - "+dec2bin(a[0])+" - "+dec2bin(a[0] * 16777216));
+  // alert("octet2dec1 "+a[0]+" - "+dec2bin(a[0])+" - "+dec2bin(a[0] * 16777216));
   // poor mans bit shifting (Int32 issue)
   var d = 0;
   d = d + parseInt(a[0]) * 16777216; //Math.pow(2,24);
@@ -265,23 +265,23 @@ function calculateClass(c) {
 }
 
 /******************************************************************************
- * The functions below just set the values in our HTML form elements.  These
- *	elements can be submitted to a server side script for database storage.
- *	These functions are linked to onload, onchange, etc. in our HTML.
- ******************************************************************************/
+* The functions below just set the values in our HTML form elements. These
+* elements can be submitted to a server side script for database storage.
+* These functions are linked to onload, onchange, etc. in our HTML.
+******************************************************************************/
 function calculateIPCIDR(ip) {
   /*
-    var x = mask.value;
-    var re = new RegExp("^([0-9]{1,3}\.){3}[0-9]{1,3}(( ([0-9]{1,3}\.){3}[0-9]{1,3})|(/[0-9]{1,2}))$");
-    if( !re.test(mask.value) ) {
-        var s = "Use IP & CIDR Netmask: 10.0.0.1/22";
-        s += "\nOr IP & Netmask: 10.0.0.1 255.255.252.0";
-        //s += "\nOr IP & Wildcard Mask: 10.0.0.1 0.0.3.255";
-        mask.focus();
-        mask.select();
-        return false;
-    }
-    */
+var x = mask.value;
+var re = new RegExp("^([0-9]{1,3}\.){3}[0-9]{1,3}(( ([0-9]{1,3}\.){3}[0-9]{1,3})|(/[0-9]{1,2}))$");
+if( !re.test(mask.value) ) {
+var s = "Use IP & CIDR Netmask: 10.0.0.1/22";
+s += "\nOr IP & Netmask: 10.0.0.1 255.255.252.0";
+//s += "\nOr IP & Wildcard Mask: 10.0.0.1 0.0.3.255";
+mask.focus();
+mask.select();
+return false;
+}
+*/
 
   var ipa = ip.split('/');
   if (ipa.length = 2) {
@@ -313,91 +313,91 @@ function calculateHosts(cidr) {
 
 // functions to build drop downs
 // function populateMaskSelect( s, aNet, maskString) {
-//     s.length = 0;
-//     var a = new Array(0,0,0,0);
-//     var i = 0;
-//     if( aNet[0] >= 1 && aNet[0] <= 126 ) {
-//         //class A
-//         a[i++] = 255;
-//     } else if( aNet[0] >= 128 && aNet[0] <= 191 ){
-//         //class B
-//         a[i++] = 255;
-//         a[i++] = 255;
-//     } else if( aNet[0] >= 192 && aNet[0] <= 223 ){
-//         //class C
-//         a[i++] = 255;
-//         a[i++] = 255;
-//         a[i++] = 255;
-//     }
+// s.length = 0;
+// var a = new Array(0,0,0,0);
+// var i = 0;
+// if( aNet[0] >= 1 && aNet[0] <= 126 ) {
+// //class A
+// a[i++] = 255;
+// } else if( aNet[0] >= 128 && aNet[0] <= 191 ){
+// //class B
+// a[i++] = 255;
+// a[i++] = 255;
+// } else if( aNet[0] >= 192 && aNet[0] <= 223 ){
+// //class C
+// a[i++] = 255;
+// a[i++] = 255;
+// a[i++] = 255;
+// }
 
-//     while( i < 4 ) {
-//         var t = a[0]+"."+a[1]+"."+a[2]+"."+a[3];
-//         addOption(s,t,t);
-//         var pow = 7;
-//         while(pow >= 0 && !(i==3 && pow<2 )) {
-//             a[i] = a[i] + Math.pow(2,pow);
-//             t = a[0]+"."+a[1]+"."+a[2]+"."+a[3];
-//             addOption(s,t,t);
-//             pow--;
-//         }
-//         i++;
-//     }
-//     selectOption(s,maskString);
+// while( i < 4 ) {
+// var t = a[0]+"."+a[1]+"."+a[2]+"."+a[3];
+// addOption(s,t,t);
+// var pow = 7;
+// while(pow >= 0 && !(i==3 && pow<2 )) {
+// a[i] = a[i] + Math.pow(2,pow);
+// t = a[0]+"."+a[1]+"."+a[2]+"."+a[3];
+// addOption(s,t,t);
+// pow--;
+// }
+// i++;
+// }
+// selectOption(s,maskString);
 // }
 // function populateHostsSelect(s,aNet,cidr){
-//     s.length = 0;
-//     var pow = 8;
-//     if( aNet[0] >= 1 && aNet[0] <= 126 ) {
-//         //class = 'A';
-//         pow = 24;
-//     } else if( aNet[0] >= 128 && aNet[0] <= 191 ){
-//         //class = 'B';
-//         pow = 16;
-//     } else if( aNet[0] >= 192 && aNet[0] <= 223 ){
-//         //class = 'C';
-//         pow = 8;
-//     }
-//     var t = 2;
-//     while(pow > 2 ) {
-//         t = Math.pow(2,pow) -2;
-//         addOption(s,t,32-pow);
-//         pow--;
-//     }
-//     selectOption(s,cidr);
+// s.length = 0;
+// var pow = 8;
+// if( aNet[0] >= 1 && aNet[0] <= 126 ) {
+// //class = 'A';
+// pow = 24;
+// } else if( aNet[0] >= 128 && aNet[0] <= 191 ){
+// //class = 'B';
+// pow = 16;
+// } else if( aNet[0] >= 192 && aNet[0] <= 223 ){
+// //class = 'C';
+// pow = 8;
+// }
+// var t = 2;
+// while(pow > 2 ) {
+// t = Math.pow(2,pow) -2;
+// addOption(s,t,32-pow);
+// pow--;
+// }
+// selectOption(s,cidr);
 // }
 // function addOption(s,t,v){
-//     var o = document.createElement('option');
-//     o.text = t;
-//     o.value = v;
-//     try {
-//         s.add(o, null); // standards compliant; doesn't work in IE
-//     } catch(e) {
-//         s.add(o); // IE only
-//     }
+// var o = document.createElement('option');
+// o.text = t;
+// o.value = v;
+// try {
+// s.add(o, null); // standards compliant; doesn't work in IE
+// } catch(e) {
+// s.add(o); // IE only
+// }
 // }
 // function selectOption(s,v){
-//     for (var i=0;i<s.length;i++){
-//         if(s[i].value == v){
-//             s.selectedIndex = i;
-//             break;
-//         }
-//     }
+// for (var i=0;i<s.length;i++){
+// if(s[i].value == v){
+// s.selectedIndex = i;
+// break;
+// }
+// }
 // }
 
 // // displays a stack trace for an exception
 // function stackTrace( e ) {
-//     var r = '';
-//     for (var p in e) {
-//         r += p + ': ' + e[p] + '\n';
-//     }
-//     alert(r);
-//     //console.log, console.debug, console.info, console.warn, and console.error.
+// var r = '';
+// for (var p in e) {
+// r += p + ': ' + e[p] + '\n';
+// }
+// alert(r);
+// //console.log, console.debug, console.info, console.warn, and console.error.
 // }
 
 function checkEntries(ip, mask) {
   /* we check if one or both fields are empty,
-   * and return the right message.
-   */
+* and return the right message.
+*/
   if (ip == "" && mask == "") {
     return "Specify valid IP address and subnet mask (ex: 192.168.10.1)."
   } else if (ip == "" && mask != "") {
@@ -406,8 +406,8 @@ function checkEntries(ip, mask) {
     return "Specify a valid subnet mask (ex: 255.255.255.0 or 24).";
   }
   /* we check if fields only contains numbers and dots,
-   * and return an explicit error if it is the case.
-   */
+* and return an explicit error if it is the case.
+*/
   else if (ip.match(/[^1234567890\.]/i) != null && mask.match(/[^1234567890\.]/i) != null) {
     return "Specify valid IP address and subnet mask (ex: 192.168.10.1, 255.255.255.0 or 24).";
   } else if (ip.match(/[^1234567890\.]/i) != null && mask.match(/[^1234567890\.]/i) == null) {
@@ -416,8 +416,8 @@ function checkEntries(ip, mask) {
     return "Specify a valid subnet mask (ex: 255.255.255.0 or 24).";
   }
   /* we check that both fields are composed of 4 digits separated by dots,
-   * and return an explicit error if it is the case.
-   */
+* and return an explicit error if it is the case.
+*/
   var i = ip.split(".");
   var m = mask.split(".");
   if (i.length != 4) {
@@ -435,18 +435,18 @@ function checkEntries(ip, mask) {
   /* we check if the value specified in both fields are from 0 to 255.*/
   for (var x = 0; x < 4; x++) {
     var a = parseInt(i[x])
-    //    console.log("value for address to check is : ", a);
+    // console.log("value for address to check is : ", a);
     var b = m[x]
-    //    console.log("value for mask to check is : ", b);
+    // console.log("value for mask to check is : ", b);
     if (a <= 0 | a >= 255) {
       return "Specify a valid IP address (ex: 255.255.255.0 or 24).";
-    } else if (b.match(/^0$|^128$|^192$|^224$|^240$|^248$|^252$|^255$/i) == null) {
+    } else if (b.match(/^0$|^128$|^192$|^224$|^240$|^248$|^252$|^254$|^255$/i) == null) {
       return "Specify a valid subnet mask (ex: 255.255.255.0 or 24).";
     }
   }
   /* if nothing is wrong,
-   * return subnet mask
-   */
+* return subnet mask
+*/
   return mask;
 }
 
