@@ -146,7 +146,6 @@ function octet2dec(a) {
   d = d + a[1] * 65536; //Math.pow(2,16);
   d = d + a[2] * 256; //Math.pow(2,8);
   d = d + a[3];
-  console.log("d: ", d);
   return d;
 }
 // Convert decimal to our array of 4 ints.
