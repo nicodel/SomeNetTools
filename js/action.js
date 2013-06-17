@@ -10,7 +10,7 @@ $(function () {
         //    console.log($("#ip").val());
         //    console.log(checkEntries($("#ip").val(), $("#mask").val()));
         if (checkEntries($("#ip").val(), $("#mask").val()) == true) {
-            console.log("in ok");
+//            console.log("in ok");
             $("#submit").removeAttr('disabled');
         }
     });
