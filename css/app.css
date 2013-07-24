@@ -15,8 +15,8 @@
 /* Your styles here */
 
 body {
-  padding: 10px;
-  max-width: 320px;
+  /*padding: 10px;*/
+/*  max-width: 320px;*/
   margin:auto;
   font-family: 'MozTTLight', Verdana, sans-serif;
 }
@@ -44,6 +44,10 @@ section[role="region"] > header:first-child menu[type="toolbar"] a {
     text-align:right;
     padding-right:1rem;
 }
+#top, #result {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 button,
 a[role="button"] {
@@ -51,7 +55,7 @@ a[role="button"] {
     margin-top: 15px;
 }
 
-.info, input[type="text"] {
+.info, input[type="number"], input[type="text"] {
     font:1.3rem/4rem "MozTT", Sans-serif;
     margin-top: 10px;
     background: #fff url(../img/ui/shadow.png) repeat-x;
@@ -60,7 +64,7 @@ a[role="button"] {
 #result {
 /*    width: 41.1em;*/
 /*    margin: 2em 0;*/
-    padding: 0;
+    /*padding: 0;*/
     font-size:1.3rem;
 }
 #result dt {
@@ -73,4 +77,15 @@ a[role="button"] {
 /*    padding: 0;*/
     border-bottom: 1px solid #e6e6e6;
     color: #5b5b5b;
+}
+
+@media (min-width: 540px) {
+  .info, input[type="text"] {
+    font:2.1rem/4rem "MozTT", Sans-serif;
+  }
+  section[role="region"] > header:first-child h1 {
+    font: 2.1rem/3.2rem "MozTT", Sans-serif;
+  }
+  #result {font-size:2.1rem;}
+  button {font-size:2rem;}
 }
