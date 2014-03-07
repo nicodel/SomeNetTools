@@ -18,7 +18,7 @@ define(function(require) {
     require('./install-button');
 
     // Write your app here.
-
+    alert("SomeNetTool has been renamed, and packaged as SubnetTool.\nYou can download SubnetTool at\nhttps://marketplace.firefox.com/app/subnet-too");
 
 
 
